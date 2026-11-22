@@ -1,0 +1,117 @@
+{
+    "name": "Personal Loan KYC",
+    "purpose": "We collect your personal, income, and bank details to verify your identity and assess eligibility for a personal loan.",
+    "steps": [
+        {
+            "id": "personal_details",
+            "title": "Personal Details",
+            "fields": [
+                {
+                    "id": "full_name",
+                    "type": "text",
+                    "label": "Full Name",
+                    "required": true
+                },
+                {
+                    "id": "date_of_birth",
+                    "type": "date",
+                    "label": "Date of Birth",
+                    "required": true
+                },
+                {
+                    "id": "kyc_consent",
+                    "type": "consent",
+                    "label": "I agree to share my PAN and Aadhaar details for KYC verification",
+                    "required": true
+                },
+                {
+                    "id": "pan_number",
+                    "type": "pan",
+                    "label": "PAN Number",
+                    "required": true,
+                    "sensitive": true
+                },
+                {
+                    "id": "aadhaar_last4_digits",
+                    "type": "aadhaar_last4",
+                    "label": "Last 4 Digits of Aadhaar",
+                    "required": true,
+                    "sensitive": true
+                }
+            ]
+        },
+        {
+            "id": "employment_details",
+            "title": "Employment & Income",
+            "fields": [
+                {
+                    "id": "employment_type",
+                    "type": "select",
+                    "label": "Employment Type",
+                    "required": true,
+                    "options": [
+                        {
+                            "label": "Salaried",
+                            "value": "salaried"
+                        },
+                        {
+                            "label": "Self Employed",
+                            "value": "self_employed"
+                        }
+                    ]
+                },
+                {
+                    "id": "gstin_number",
+                    "type": "gstin",
+                    "label": "GSTIN",
+                    "required": false,
+                    "showIf": {
+                        "fieldId": "employment_type",
+                        "equals": "self_employed"
+                    }
+                },
+                {
+                    "id": "monthly_income",
+                    "type": "number",
+                    "label": "Monthly Net Income",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "id": "bank_details",
+            "title": "Bank Details",
+            "fields": [
+                {
+                    "id": "account_number",
+                    "type": "text",
+                    "label": "Bank Account Number",
+                    "required": true,
+                    "sensitive": true
+                },
+                {
+                    "id": "ifsc_code",
+                    "type": "ifsc",
+                    "label": "Bank IFSC Code",
+                    "required": true
+                },
+                {
+                    "id": "account_type",
+                    "type": "select",
+                    "label": "Account Type",
+                    "required": true,
+                    "options": [
+                        {
+                            "label": "Savings",
+                            "value": "savings"
+                        },
+                        {
+                            "label": "Current",
+                            "value": "current"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
