@@ -2,10 +2,13 @@
 
 **Describe a customer onboarding or KYC flow in plain English. KYC Studio generates a working multi-step form with Indian document validation, checks it for privacy and compliance problems, and exports production-ready React code.**
 
-<!-- TODO: replace with a 30–60s demo GIF: prompt → streaming → checks → Fix it → export -->
-![Demo](docs/demo.gif)
+[![CI](https://github.com/srinivasbharadwaj1995/kyc-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/srinivasbharadwaj1995/kyc-studio/actions/workflows/ci.yml)
 
-**[Live demo](https://YOUR-APP.vercel.app)** · Next.js 16 · React 19 · TypeScript (strict) · Gemini via Vercel AI SDK · Zod · React Hook Form · Zustand · dnd-kit · Vitest · Playwright
+<!-- TODO: add a 30–60s demo GIF (prompt → streaming → checks → Fix it → export) as docs/demo.gif, then uncomment:
+![Demo](docs/demo.gif)
+-->
+
+**[Live demo → kyc-studio-virid.vercel.app](https://kyc-studio-virid.vercel.app/)** · Next.js 16 · React 19 · TypeScript (strict) · Gemini via Vercel AI SDK · Zod · React Hook Form · Zustand · dnd-kit · Vitest · Playwright
 
 > ⚠️ The compliance checks are **hints for developers, not legal or RBI compliance advice.**
 
@@ -116,12 +119,14 @@ The AI is **never called in tests**: unit tests mock `fetch` and stream back a r
 
 ### Lighthouse
 
-| | Performance | Accessibility | Best practices | SEO |
-|---|---|---|---|---|
-| Desktop | 99 | 100 | 100 | 100 |
-| Mobile | 81–95* | 100 | 100 | 100 |
+Measured against the live Vercel deployment:
 
-\*Measured locally on a 2015 laptop CPU. With Lighthouse's default 4× CPU slowdown it scores 81; calibrated for this machine (2×) it scores 95. <!-- TODO: replace with PageSpeed Insights numbers from the live URL. -->
+| | Performance | Accessibility | Best practices | SEO | LCP |
+|---|---|---|---|---|---|
+| Desktop | 99 | 100 | 100 | 100 | 0.3 s |
+| Mobile | 77–95* | 100 | 100 | 100 | 1.0 s |
+
+\*The Lighthouse runs used a 2015 laptop CPU. With the default 4× mobile CPU slowdown, the main thread (React's hydration) costs most of the score; calibrated for that machine (2×), mobile scores 95. Page load itself is fast (LCP 1.0 s). <!-- TODO: add PageSpeed Insights numbers (pagespeed.web.dev), which run on Google's hardware. -->
 
 ## Known limitations
 
